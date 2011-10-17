@@ -1,0 +1,705 @@
+# Last attribute no. used: 95 [The attribute no. 88 is free, however...]
+# Last objectclass no. used: 5
+
+
+# OID Macros
+objectIdentifier nea			1.3.6.1.4.1.38219
+
+objectIdentifier dn			1.3.6.1.4.1.1466.115.121.1.12
+objectIdentifier ia5String 		1.3.6.1.4.1.1466.115.121.1.26
+objectIdentifier numericString 		1.3.6.1.4.1.1466.115.121.1.36
+objectIdentifier directoryString 	1.3.6.1.4.1.1466.115.121.1.15
+objectIdentifier printableString 	1.3.6.1.4.1.1466.115.121.1.44
+objectIdentifier telephoneNumber	1.3.6.1.4.1.1466.115.121.1.50
+
+
+
+#####################
+# Common Attributes #
+#####################
+
+
+# ID
+attributetype ( nea:1.2.3
+	NAME ('NID' 'nationalId')
+        DESC 'National ID'
+	SINGLE-VALUE
+        EQUALITY numericStringMatch
+        SYNTAX numericString{17} )
+attributetype ( nea:2.2.3
+	NAME ('birthRegistrationNo' 'BRN' 'birthRegNo' 'BIN' 'birthIdNo')
+        DESC 'Birth Registration/Identification Number'
+	SINGLE-VALUE
+        EQUALITY numericStringMatch
+        SYNTAX numericString{17} )
+attributetype ( nea:3.2.3
+	NAME ('citizenUID' 'citizenUniqueId')
+        DESC 'Unique ID Number'
+	SINGLE-VALUE
+        EQUALITY caseIgnoreMatch
+        SYNTAX directoryString{11} )
+
+# Full Name
+attributetype ( nea:4.2.3
+	NAME ('fullNameInBangla' 'fullNameBn')
+        DESC 'Full Name in Bangla'
+        EQUALITY caseIgnoreMatch
+        SYNTAX directoryString{120} )
+attributetype ( nea:5.2.3
+	NAME ('fullNameInEnglish' 'fullNameEn')
+        DESC 'Full Name in English'
+        EQUALITY caseIgnoreIA5Match
+        SYNTAX ia5String{120} )
+
+# Date
+attributetype ( nea:6.2.3
+	NAME 'date'
+        DESC 'Date (in format - YYYY-MM-DD)'
+        EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+        SYNTAX printableString{10} )
+
+# Address
+attributetype ( nea:7.2.3
+	NAME 'house'
+        DESC 'Household No.'
+	SINGLE-VALUE
+        EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+        SYNTAX directoryString{50} )
+attributetype ( nea:8.2.3
+	NAME 'road'
+        DESC 'Road No.'
+	SINGLE-VALUE
+        EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+        SYNTAX directoryString{50} )
+attributetype ( nea:9.2.3
+	NAME 'area'
+        DESC 'Area/Block/Sector/Moholla/Mouza ID'
+	SINGLE-VALUE
+        EQUALITY numericStringMatch
+        SYNTAX numericString{3} )
+attributetype ( nea:10.2.3
+	NAME ('village' 'vill')
+        DESC 'Village ID'
+	SINGLE-VALUE
+        EQUALITY numericStringMatch
+        SYNTAX numericString{2} )
+attributetype ( nea:11.2.3
+	NAME ('postOffice' 'po')
+        DESC 'Post Office'
+	SINGLE-VALUE
+        EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+        SYNTAX directoryString{50} )
+attributetype ( nea:12.2.3
+	NAME ('postCode' 'pCode')
+        DESC 'Post Code'
+	SINGLE-VALUE
+        EQUALITY numericStringMatch
+        SYNTAX numericString{10} )
+attributetype ( nea:13.2.3
+	NAME 'ward'
+        DESC 'Ward No.'
+	SINGLE-VALUE
+        EQUALITY numericStringMatch
+        SYNTAX numericString{3} )
+attributetype ( nea:14.2.3
+	NAME ('union' 'unionCode' 'cantonmentBoardNo')
+        DESC 'Union Code / Cantonment Board No.'
+	SINGLE-VALUE
+        EQUALITY numericStringMatch
+        SYNTAX numericString{2} )
+attributetype ( nea:15.2.3
+	NAME 'upazila'
+        DESC 'Upazila Code'
+	SINGLE-VALUE
+        EQUALITY numericStringMatch
+        SYNTAX numericString{2} )
+attributetype ( nea:16.2.3
+	NAME ('thana' 'policeStation' 'ps')
+        DESC 'Thana / Police Station Name'
+	SINGLE-VALUE
+        EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+        SYNTAX directoryString{50} )
+attributetype ( nea:84.2.3
+	NAME ('municipality' 'cityCorporation' 'cityCorp')
+        DESC 'Municipality / City Corporation Code'
+	SINGLE-VALUE
+        EQUALITY numericStringMatch
+        SYNTAX numericString{2} )
+attributetype ( nea:17.2.3
+	NAME ('district' 'dist' 'zila')
+        DESC 'District Code'
+	SINGLE-VALUE
+        EQUALITY numericStringMatch
+        SYNTAX numericString{2} )
+attributetype ( nea:18.2.3
+	NAME ('country')
+        DESC 'Country Code'
+	SINGLE-VALUE
+        EQUALITY numericStringMatch
+        SYNTAX numericString{3} )
+
+
+
+
+
+
+########################
+########################
+####         	    ####
+####    Citizen     ####
+####         	    ####
+########################
+########################
+
+
+
+
+##############
+# Attributes #
+##############
+
+
+# Citizen’s ID
+# As in ID in "Common Attributes" Section Above
+
+# Citizen’s Name
+# As in Full Name in "Common Attributes" Section Above
+
+# Citizen’s Father
+attributetype ( nea:19.2.3
+	NAME ('fatherNameInBangla' 'fatherNameBn')
+        DESC 'Full Name of Father in Bangla'
+        SUP fullNameBn )
+attributetype ( nea:20.2.3
+	NAME ('fatherNameInEnglish' 'fatherNameEn')
+        DESC 'Full Name of Father in English'
+        SUP fullNameEn )
+attributetype ( nea:21.2.3
+	NAME ('fatherNID' 'fatherNationalId')
+        DESC 'National ID of Father'
+        SUP NID )
+attributetype ( nea:22.2.3
+	NAME ('fatherBirthRegNo' 'fatherBRN' 'fatherBIN' 'fatherBirthIdNo')
+        DESC 'Birth Registration/Identification Number of Father'
+        SUP BRN )
+attributetype ( nea:23.2.3
+	NAME ('fatherUID' 'fatherUniqueId')
+        DESC 'Unique ID Number of Father'
+        SUP citizenUID )
+
+# Citizen’s Mother
+attributetype ( nea:24.2.3
+	NAME ('motherNameInBangla' 'motherNameBn')
+        DESC 'Full Name of Mother in Bangla'
+        SUP fullNameBn )
+attributetype ( nea:25.2.3
+	NAME ('motherNameInEnglish' 'motherNameEn')
+        DESC 'Full Name of Mother in English'
+        SUP fullNameEn )
+attributetype ( nea:26.2.3
+	NAME ('motherNID' 'motherNationalId')
+        DESC 'National ID of Mother'
+        SUP NID )
+attributetype ( nea:27.2.3
+	NAME ('motherBirthRegNo' 'motherBRN' 'motherBIN' 'motherBirthIdNo')
+        DESC 'Birth Registration/Identification Number of Mother'
+        SUP BRN )
+attributetype ( nea:28.2.3
+	NAME ('motherUID' 'motherUniqueId')
+        DESC 'Unique ID Number of Mother'
+        SUP citizenUID )
+
+# Citizen's Date & Place of Birth
+attributetype ( nea:29.2.3
+	NAME ('dateOfBirth')
+        DESC 'Date of Birth'
+	SINGLE-VALUE
+        SUP date )
+attributetype ( nea:30.2.3
+	NAME ('placeOfBirth' 'birthPlace')
+        DESC 'Place of Birth'
+	SINGLE-VALUE
+        EQUALITY numericStringMatch
+	SUBSTR numericStringSubstringsMatch
+        SYNTAX numericString{4} )
+
+# Citizen's Present Address
+attributetype ( nea:31.2.3
+	NAME 'presentHouse'
+        DESC 'Present Household No.'
+	SUP house )
+attributetype ( nea:32.2.3
+	NAME 'presentRoad'
+        DESC 'Present Road No.'
+	SUP road )
+attributetype ( nea:33.2.3
+	NAME 'presentArea'
+        DESC 'Present Area/Block/Sector/Moholla/Mouza ID'
+	SUP area )
+attributetype ( nea:34.2.3
+	NAME ('presentVillage' 'presVill')
+        DESC 'Present Village ID'
+	SUP village )
+attributetype ( nea:35.2.3
+	NAME ('presentPostOffice' 'presPo')
+        DESC 'Present Post Office'
+	SUP postOffice )
+attributetype ( nea:36.2.3
+	NAME ('presentPostCode' 'presPCode')
+        DESC 'Present Post Code'
+	SUP postCode )
+attributetype ( nea:37.2.3
+	NAME 'presentWard'
+        DESC 'Present Ward No.'
+	SUP ward )
+attributetype ( nea:38.2.3
+	NAME ('presentUnion' 'presUnionCode' 'presCantonmentBoardNo')
+        DESC 'Present Union Code / Cantonment Board No.'
+	SUP union )
+attributetype ( nea:39.2.3
+	NAME 'presentUpazila'
+        DESC 'Present Upazila Code'
+	SUP upazila )
+attributetype ( nea:40.2.3
+	NAME ('presentThana' 'presPoliceStation' 'presPs')
+        DESC 'Present Thana / Police Station Name'
+	SUP thana )
+attributetype ( nea:41.2.3
+	NAME ('presentMunicipality' 'presCityCorporation' 'presCityCorp')
+        DESC 'Present Municipality / City Corporation Code'
+	SUP municipality )
+attributetype ( nea:42.2.3
+	NAME ('presentDistrict' 'presentDist' 'presZila')
+        DESC 'Present District Code'
+	SUP district )
+attributetype ( nea:43.2.3
+	NAME ('presentCountry')
+        DESC 'Present Country Code'
+	SUP country )
+
+# Citizen's Permanent Address
+attributetype ( nea:44.2.3
+	NAME 'permanentHouse'
+        DESC 'Permanent Household No.'
+	SUP house )
+attributetype ( nea:45.2.3
+	NAME 'permanentRoad'
+        DESC 'Permanent Road No.'
+	SUP road )
+attributetype ( nea:46.2.3
+	NAME 'permanentArea'
+        DESC 'Permanent Area/Block/Sector/Moholla/Mouza ID'
+	SUP area )
+attributetype ( nea:47.2.3
+	NAME ('permanentVillage' 'permVill')
+        DESC 'Permanent Village ID'
+	SUP village )
+attributetype ( nea:48.2.3
+	NAME ('permanentPostOffice' 'permPo')
+        DESC 'Permanent Post Office'
+	SUP postOffice )
+attributetype ( nea:49.2.3
+	NAME ('permanentPostCode' 'permPCode')
+        DESC 'Permanent Post Code'
+	SUP postCode )
+attributetype ( nea:50.2.3
+	NAME 'permanentWard'
+        DESC 'Permanent Ward No.'
+	SUP ward )
+attributetype ( nea:51.2.3
+	NAME ('permanentUnion' 'permUnionCode' 'permCantonmentBoardNo')
+        DESC 'Permanent Union Code / Cantonment Board No.'
+	SUP union )
+attributetype ( nea:52.2.3
+	NAME ('permanentUpazila' 'permUpazila')
+        DESC 'Permanent Upazila Code'
+	SUP upazila )
+attributetype ( nea:53.2.3
+	NAME ('permanentThana' 'permPoliceStation' 'permPs')
+        DESC 'Permanent Thana / Police Station Name'
+	SUP thana )
+attributetype ( nea:54.2.3
+	NAME ('permanentMunicipality' 'permCityCorporation' 'permCityCorp')
+        DESC 'Permanent Municipality / City Corporation Code'
+	SUP municipality )
+attributetype ( nea:55.2.3
+	NAME ('permanentDistrict' 'permDist' 'permZila')
+        DESC 'Permanent District Code'
+	SUP district )
+attributetype ( nea:56.2.3
+	NAME ('permanentCountry')
+        DESC 'Permanent Country Code'
+	SUP country )
+
+# Citizen's Gender
+attributetype ( nea:57.2.3
+	NAME ('gender' 'sex')
+        DESC 'Gender / Sex'
+	SINGLE-VALUE
+        EQUALITY caseIgnoreMatch
+        SYNTAX printableString{1} )
+
+# Citizen's Marital Status and Spouse
+attributetype ( nea:58.2.3
+	NAME 'maritalStatus'
+        DESC 'Marital Status'
+	SINGLE-VALUE
+        EQUALITY caseIgnoreMatch
+        SYNTAX printableString{1} )
+attributetype ( nea:59.2.3
+	NAME 'marriageID'
+        DESC 'Marriage ID'
+        EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+        SYNTAX directoryString{8} )
+attributetype ( nea:60.2.3
+	NAME ('spouseNameInBangla' 'spouseNameBn')
+        DESC 'Full Name of Spouse in Bangla'
+        SUP fullNameBn )
+attributetype ( nea:61.2.3
+	NAME ('spouseNameInEnglish' 'spouseNameEn')
+        DESC 'Full Name of Spouse in English'
+        SUP fullNameEn )
+attributetype ( nea:62.2.3
+	NAME ('spouseNID' 'spouseNationalId')
+        DESC 'National ID of Spouse'
+        SUP NID )
+attributetype ( nea:63.2.3
+	NAME ('spouseBirthRegNo' 'spouseBRN' 'spouseBIN' 'spouseBirthIdNo')
+        DESC 'Birth Registration/Identification Number of Spouse'
+        SUP BRN )
+attributetype ( nea:64.2.3
+	NAME ('spouseUID' 'spouseUniqueId')
+        DESC 'Unique ID Number of Spouse'
+        SUP citizenUID )
+
+# Citizen's Religion
+attributetype ( nea:65.2.3
+	NAME 'religion'
+        DESC 'Religion'
+	SINGLE-VALUE
+        EQUALITY caseIgnoreMatch
+	SUBSTR caseIgnoreSubstringsMatch
+        SYNTAX directoryString{25} )
+
+# Citizen's Occupation
+attributetype ( nea:66.2.3
+	NAME ('occupation' 'occ')
+        DESC 'Occupation'
+	SINGLE-VALUE
+        EQUALITY numericStringMatch
+        SYNTAX numericString{2} )
+
+# Citizen's Blood Group
+attributetype ( nea:67.2.3
+	NAME ('bloodGroup' 'bg')
+        DESC 'Blood Group'
+	SINGLE-VALUE
+        EQUALITY numericStringMatch
+        SYNTAX numericString{1} )
+
+# Citizen's Nationality
+attributetype ( nea:68.2.3
+	NAME ('nationality' 'nat')
+        DESC 'Nationality'
+	SINGLE-VALUE
+        EQUALITY caseIgnoreMatch
+        SYNTAX directoryString{35} )
+
+# Citizen's Educational Qualification
+attributetype ( nea:69.2.3
+	NAME ('education' 'edu' 'educationalQualification')
+        DESC 'Educational Qualification'
+	SINGLE-VALUE
+        EQUALITY numericStringMatch
+        SYNTAX numericString{2} )
+
+# Citizen's Disability Type
+attributetype ( nea:70.2.3
+	NAME 'disability'
+        DESC 'Disability Type'
+	SINGLE-VALUE
+        EQUALITY numericStringMatch
+        SYNTAX numericString{2} )
+
+# Citizen's Ethnicity Type
+attributetype ( nea:71.2.3
+	NAME ('ethnicity' 'eth')
+        DESC 'Ethnicity Type'
+	SINGLE-VALUE
+        EQUALITY numericStringMatch
+        SYNTAX numericString{2} )
+
+
+###############
+# ObjectClass #
+###############
+
+
+objectclass ( nea:1.2.4
+	NAME 'bdCitizen'
+        DESC 'Bangladesh citizen'
+        SUP top STRUCTURAL
+	MUST (	  uid
+		$ fullNameInBangla   	$ fullNameInEnglish
+		$ fatherNameInBangla 	$ fatherNameInEnglish
+		$ motherNameInBangla 	$ motherNameInEnglish
+		$ dateOfBirth		$ placeOfBirth
+		$ presentHouse 		$ presentArea 		$ presentDistrict	$ presentCountry
+		$ permanentHouse	$ permanentArea		$ permanentDistrict 	$ permanentCountry
+		$ gender 		$ maritalStatus 	$ religion 		$ occupation)
+	MAY (	  NID			$ birthRegNo		$ citizenUID
+		$ fatherNID		$ fatherBirthRegNo	$ fatherUID
+		$ motherNID		$ motherBirthRegNo	$ motherUID
+		$ presentRoad		$ presentVillage	$ presentPostOffice	$ presentPostCode	$ presentWard	
+					$ presentUnion		$ presentUpazila	$ presentThana		$ presentMunicipality
+		$ permanentRoad		$ permanentVillage	$ permanentPostOffice	$ permanentPostCode	$ permanentWard	
+					$ permanentUnion	$ permanentUpazila	$ permanentThana	$ permanentMunicipality
+		$ marriageId		$ spouseNameInBangla	$ spouseNameInEnglish	$ spouseNID 		$ spouseBirthRegNo 	$ spouseUID
+		$ bloodGroup		$ nationality		$ education		$ disability		$ ethnicity) )
+
+
+
+
+
+
+
+########################
+########################
+####         	    ####
+#### Govt. Employee ####
+####         	    ####
+########################
+########################
+
+
+
+
+##############
+# Attributes #
+##############
+
+attributetype ( nea:72.2.3
+	NAME 'rank'
+        DESC 'Present Posting Rank'
+	EQUALITY distinguishedNameMatch
+        SYNTAX dn )
+attributetype ( nea:73.2.3
+	NAME 'cadre'
+        DESC 'Cadre'
+	SINGLE-VALUE
+        EQUALITY caseIgnoreMatch
+        SYNTAX directoryString )
+attributetype ( nea:74.2.3
+	NAME 'batch'
+        DESC 'Batch'
+	SINGLE-VALUE
+        EQUALITY caseIgnoreMatch
+        SYNTAX directoryString )
+attributetype ( nea:75.2.3
+	NAME 'serviceID'
+        DESC 'Service ID'
+	SINGLE-VALUE
+        EQUALITY numericStringMatch
+        SYNTAX numericString )
+attributetype ( nea:76.2.3
+	NAME ('primaryDesignation' 'primaryDesig' 'primDesig')
+        DESC 'Present Primary Posting Designation'
+	EQUALITY distinguishedNameMatch
+        SYNTAX dn )
+attributetype ( nea:89.2.3
+	NAME ('secondaryDesignation' 'secondaryDesig' 'secDesig')
+        DESC 'Present Secondary Posting Designation'
+	EQUALITY distinguishedNameMatch
+        SYNTAX dn )
+attributetype ( nea:77.2.3
+	NAME ('primaryPostingLocation' 'primaryPostingLoc' 'primPostLoc')
+        DESC 'Present Primary Posting Location'
+	EQUALITY distinguishedNameMatch
+        SYNTAX dn )
+attributetype ( nea:90.2.3
+	NAME ('secondaryPostingLocation' 'secondaryPostingLoc' 'secPostLoc')
+        DESC 'Present Secondary Posting Location'
+	EQUALITY distinguishedNameMatch
+        SYNTAX dn )
+attributetype ( nea:78.2.3
+	NAME ('serviceJoinedDate' 'joiningDateOfService')
+        DESC 'Joining Date of Govt. Service'
+	SINGLE-VALUE
+        SUP date )
+attributetype ( nea:79.2.3
+	NAME ('postJoinedDate' 'joiningDateOfPost')
+        DESC 'Joining Date of Present Post'
+	SINGLE-VALUE
+        SUP date )
+attributetype ( nea:80.2.3
+	NAME ('postConfirmedDate' 'confirmedPost')
+        DESC 'Confirmation Date of Present Post'
+	SINGLE-VALUE
+        SUP date )
+attributetype ( nea:81.2.3
+	NAME ('employeeStatus' 'empStatus')
+        DESC 'Employee Status'
+	SINGLE-VALUE
+        EQUALITY numericStringMatch
+        SYNTAX numericString )
+attributetype ( nea:82.2.3
+	NAME ('officeTel')
+        DESC 'Office Telephone No.'
+        EQUALITY telephoneNumberMatch
+        SYNTAX telephoneNumber )
+attributetype ( nea:93.2.3
+	NAME ('mobileNo' 'mob')
+        DESC 'Mobile No.'
+        EQUALITY telephoneNumberMatch
+        SYNTAX telephoneNumber )
+attributetype ( nea:83.2.3
+	NAME 'emailAddr'
+        DESC 'Email Address'
+        EQUALITY caseIgnoreIA5Match
+        SYNTAX ia5String )
+attributetype ( nea:85.2.3
+	NAME ('password' 'pass')
+        DESC 'Password'
+	SINGLE-VALUE
+        EQUALITY caseExactIA5Match
+        SYNTAX ia5String )
+attributetype ( nea:86.2.3
+	NAME ('passwordExpiryDate' 'passExp')
+        DESC 'Password Expiry Date'
+	SINGLE-VALUE
+        SUP date )
+attributetype ( nea:87.2.3
+	NAME ('passwordHistory' 'passHistory')
+        DESC 'Password History'
+        EQUALITY caseExactIA5Match
+        SYNTAX ia5String )
+attributetype ( nea:91.2.3
+	NAME ('includedModuleForms' 'incModForms')
+        DESC 'Extra Assigned Module Forms'
+	EQUALITY distinguishedNameMatch
+        SYNTAX dn )
+attributetype ( nea:92.2.3
+	NAME ('excludedModuleForms' 'exModForms')
+        DESC 'Module Forms to be Excluded from Assigned Ones'
+	EQUALITY distinguishedNameMatch
+        SYNTAX dn )
+
+
+
+###############
+# ObjectClass #
+###############
+
+
+objectclass ( nea:2.2.4
+	NAME 'bdGovtEmployee'
+        DESC 'Bangladesh Govt. Employee'
+        SUP bdCitizen STRUCTURAL
+	MUST (rank $ primaryDesignation $ secondaryDesignation $ primaryPostingLocation $ secondaryPostingLocation
+		$ serviceJoinedDate $ postJoinedDate $ password $ passwordExpiryDate)
+	MAY (cadre $ batch $ serviceId $ postConfirmedDate $ employeeStatus $ officeTel $mobileNo $ emailAddr 
+		$ passwordHistory $ includedModuleForms $ excludedModuleForms) )
+
+
+
+
+
+
+########################
+########################
+####         	    ####
+####      Ranks     ####
+####         	    ####
+########################
+########################
+
+
+###############
+# ObjectClass #
+###############
+
+
+objectclass ( nea:3.2.4
+	NAME 'bdGovtEmployeeRank'
+        DESC 'Bangladesh Govt. Employee Rank'
+	MUST (cn) )
+
+
+
+
+
+
+
+########################
+########################
+####         	    ####
+####    BDModule    ####
+####         	    ####
+########################
+########################
+
+
+###############
+# ObjectClass #
+###############
+
+
+objectclass ( nea:4.2.4
+	NAME 'bdModule'
+        DESC 'BD Module'
+        MUST (cn)
+        MAY (description) )
+
+
+
+
+
+
+
+###########################
+###########################
+####         	       ####
+#### bdGovEmployeeRole ####
+####         	       ####
+###########################
+###########################
+
+
+
+
+##############
+# Attributes #
+##############
+
+attributetype ( nea:94.2.3
+	NAME ('moduleForm' 'modForm')
+        DESC 'DN of Module Form'
+        EQUALITY distinguishedNameMatch
+        SYNTAX dn )
+attributetype ( nea:95.2.3
+	NAME  ('employeeDesignation' 'empDesig')
+        DESC 'Designation'
+        EQUALITY caseIgnoreMatch
+        SUBSTR caseIgnoreSubstringsMatch
+        SYNTAX  directoryString )
+
+
+###############
+# ObjectClass #
+###############
+
+
+objectclass ( nea:5.2.4
+	NAME 'bdGovEmployeeRole'
+        DESC 'BD Govt. Employee Role'
+        SUP top STRUCTURAL
+        MUST (employeeDesignation)
+        MAY (moduleForm $ description) )
+
+

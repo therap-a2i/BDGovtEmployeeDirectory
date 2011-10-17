@@ -1,0 +1,20 @@
+<?php
+
+$ldapHost = "ldap://localhost";
+$ldapPort = "389";
+$ldapUser = "cn=admin,dc=nea,dc=gov";
+$ldapPswd = "secret";
+
+$ldapconn = ldap_connect($ldapHost, $ldapPort) or die("Can't establish LDAP connection");
+ldap_set_option($ldapconn, LDAP_OPT_PROTOCOL_VERSION, 3);
+ldap_bind($ldapconn, $ldapUser, $ldapPswd) or die("Can't bind to the server.");
+
+$dn = "ou=Organogram,dc=nea,dc=gov";
+$results = ldap_read($ldapconn, $dn, '(objectclass=organizationalUnit)');
+$entry = ldap_get_entries($ldapconn, $results);
+print_r($entry);
+
+ldap_unbind($ldapconn);
+
+?>
+

@@ -1,0 +1,12 @@
+# Create top-level object in domain
+dn: dc=nea,dc=gov
+objectclass: top
+objectclass: dcObject
+objectclass: organization
+o: NEA
+dc: nea
+
+# Create Admin user
+dn: cn=admin,dc=nea,dc=gov
+objectclass: organizationalRole
+cn: Admin

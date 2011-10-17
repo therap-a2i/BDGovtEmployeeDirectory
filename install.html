@@ -1,0 +1,189 @@
+<html>
+
+<head>
+	<title>Installing LDAP and Setting Up the Govt. Employee Directory</title>
+</head>
+
+<body>
+
+<h1 style="text-align: center">Installing LDAP and Setting Up the Govt. Employee Directory</h1>
+
+<h2>Contents</h2>
+
+<ul>
+	<li>
+		<a href="#lin0">Installing & Configuring LDAP on Ubuntu/Debian Linux</a>
+		<ul>
+			<li><a href="#lin1">Installing & Configuring OpenLDAP</a></li>
+			<li><a href="#lin2">Installing & Configuring phpLDAPAdmin</a></li>
+		</ul>
+	</li>
+	<li>
+		<a href="#win0">Installing & Configuring LDAP on Windows</a>
+		<ul>
+			<li><a href="#win1">Installing OpenLDAP</a></li>
+			<li><a href="#win2">Installing & Configuring phpLDAPAdmin</a></li>
+			<li><a href="#win3">Enabling LDAP Extension in XAMPP-PHP</a></li>
+			<li><a href="#win4">Creating the Initial Entries in LDAP</a></li>
+		</ul>
+	</li>
+</ul>
+
+<div style="margin: 50px"></div>
+
+<h2 id="lin0">Installing & Configuring LDAP on Ubuntu/Debian Linux</h2>
+
+<div style="margin: 30px"></div>
+
+<h3 id="lin1">Installing & Configuring OpenLDAP</h3>
+
+<p style="font-weight: bold">Required Files</p>
+<ul>
+	<li>backend.ldif</li>
+	<li>init.ldif</li>
+	<li>nea.schema</li>
+	<li>schema_convert.conf</li>
+</ul>
+
+<p style="font-weight: bold">Installation Instructions</p>
+
+[Prepared as per the guide at <a href="https://help.ubuntu.com/10.04/serverguide/C/openldap-server.html">
+	https://help.ubuntu.com/10.04/serverguide/C/openldap-server.html</a>]
+
+<ol>
+	<li>Place the required files into a directory.</li>
+	<li>
+		Open a terminal, navigate to the directory mentioned above and run the following commands:
+		<pre>
+		$ sudo apt-get install slapd ldap-utils
+		$ sudo ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/ldap/schema/cosine.ldif
+		$ sudo ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/ldap/schema/nis.ldif
+		$ sudo ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/ldap/schema/inetorgperson.ldif
+		$ sudo ldapadd -Y EXTERNAL -H ldapi:/// -f backend.ldif
+		$ sudo ldapadd -x -D cn=admin,dc=nea,dc=gov -W -f init.ldif
+		$ mkdir /tmp/ldif_output
+		$ slapcat -f schema_convert.conf -F /tmp/ldif_output -n0 -s "cn={12}nea,cn=schema,cn=config" > /tmp/cn=nea.ldif
+		</pre>
+	</li>
+	<li>Edit the file <code>/tmp/cn\=nea.ldif</code></li>
+	<li>
+		Ensure the first 3 lines are as follows:
+		<pre>
+		dn: cn=nea,cn=schema,cn=config
+		objectClass: olcSchemaConfig
+		cn: nea
+		</pre>
+	</li>
+	<li>
+		Also, ensure you delete the following lines from the bottom of the file:
+		<pre>
+		structuralObjectClass: olcSchemaConfig
+		entryUUID: 10dae0ea-0760-102d-80d3-f9366b7f7757
+		creatorsName: cn=config
+		createTimestamp: 20080826021140Z
+		entryCSN: 20080826021140.791425Z#000000#000#000000
+		modifiersName: cn=config
+		modifyTimestamp: 20111101021140Z		
+		</pre>
+	</li>
+	<li>
+		Save the file and close editor. Then run the following command:
+		<pre>
+		$ sudo ldapadd -Y EXTERNAL -H ldapi:/// -f /tmp/cn\=nea.ldif
+		</pre>	
+	</li>
+</ol>
+
+<div style="margin: 30px"></div>
+
+<h3 id="lin2">Installing & Configuring phpLDAPAdmin</h3>
+
+<ol>
+	<li>Download the latest phpLDAPAdmin from <a href="http://sourceforge.net/projects/phpldapadmin/">SourceForge</a>.</li>
+	<li>Unzip the directory into the www/htdocs directory of your web server.</li>
+	<li>Rename the file <code>&lt;phpldapadmin-root&gt;/config/config.php.example</code> to <code>config.php</code>.</li>
+	<li>Copy the file <code>bdGovtEmployee.xml</code> to the <code>&lt;phpldapadmin-root&gt;/templates/creation</code> directory.</li>
+	<li>
+		If you do not have the ldap extension enabled in php.ini, then enable it. 
+		See the section <a href="#win3">Enabling LDAP Extension in XAMPP-PHP</a> below to get an idea of how to enable it.
+	</li>
+</ol>
+
+<div style="margin: 50px"></div>
+
+<h2 id="win0">Installing & Configuring LDAP on Windows</h2>
+
+<div style="margin: 30px"></div>
+
+<h3 id="win1">Installing OpenLDAP</h3>
+
+<p style="font-weight: bold">Required Files</p>
+<ul>
+	<li>slapd.conf</li>
+	<li>init.ldif</li>
+	<li>nea.schema</li>
+</ul>
+
+<p style="font-weight: bold">Installation Instructions</p>
+
+<ol>
+	<li>
+		Download OpenLDAP from <a href="http://www.userbooster.de/downloadablecontent/freeware/openldap-for-windows.msi">
+		http://www.userbooster.de/downloadablecontent/freeware/openldap-for-windows.msi</a>
+	</li>
+	<li>Install using the default configurations except that "Servername / IP Address" should be "localhost"</li>
+	<li>Replace <code>C:\Program Files\OpenLDAP\slapd.conf</code> with the file <code>slapd.conf</code></li>
+	<li>Copy the file <code>nea.schema</code> into <code>C:\Program Files\OpenLDAP\schema</code></li>
+	<li>Double click the file <code>C:\Program Files\OpenLDAP\slapd.exe</code></li>
+	<li>You must leave the appeared command prompt open as long as you work with LDAP.</li>
+</ol>
+
+<div style="margin: 30px"></div>
+
+<h3 id="win2">Installing & Configuring phpLDAPAdmin</h3>
+
+See the section <a href="#lin2">Installing & Configuring phpLDAPAdmin</a> above.
+
+<div style="margin: 30px"></div>
+
+<h3 id="win3">Enabling LDAP Extension in XAMPP-PHP</h3>
+
+<ol>
+	<li>Start XAMPP and browse to xampp -> phpinfo()</li>
+	<li>
+		If you can't find anything with the heading "LDAP", then you need to enable the php ldap extension. Follow along. 
+		(Or if ldap is already enabled, skip to step 4.)
+	</li>
+	<li>
+		Edit xampp\php\php.ini and uncomment the following line by removing the semi-colon:
+		<pre>		;extension=php_ldap.dll</pre>
+	</li>
+	<li>
+		If you're using xampp 1.7.1 (or any version less than 1.7.4), then comment out the following line by prepending a semi-colon:
+		<pre>		extension=php_mcrypt.dll</pre>
+	</li>
+	<li>Restart Apache web server and repeat steps 1 and 2 to confirm that the php ldap extension is enabled.</li>
+</ol>
+
+<div style="margin: 30px"></div>
+
+<h3 id="win4">Creating the Initial Entries in LDAP</h3>
+
+<ol>
+	<li>
+		Browse LDAP directory using phpLDAPAdmin using the following credentials:<br/>
+		<b>Login DN:</b> cn=admin,dc=nea,dc=gov<br/>
+		<b>Password:</b> secret
+	</li>
+	<li>From the left panel, click on "import".</li>
+	<li>Open the attached init.ldif file and copy the entire contents.</li>
+	<li>Paste the contents into the textarea on the right panel of phpLDAPAdmin and click "Proceed >>".</li>
+	<li>You'll be presented with some errors. Don't panic! Repeat steps 2 to 4 again.</li>
+	<li>This time you'll see one failure and one success message. Just don't bother with the failure message. :)</li>
+	<li>From the left panel, click on "refresh".</li>
+	<li>Done!</li>
+</ol>
+
+</body>
+
+</html>

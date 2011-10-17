@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE template SYSTEM "template.dtd">
+
+<template>
+<askcontainer>1</askcontainer>
+<description>New BD Govt. Employee Entry</description>
+<icon>ldap-uid.png</icon>
+<invalid>0</invalid>
+<rdn>uid</rdn>
+<regexp>^ou=Government Employee,</regexp>
+<title>BD: Govt. Employee</title>
+<visible>1</visible>
+
+<objectClasses>
+<objectClass id="bdGovtEmployee"></objectClass>
+</objectClasses>
+
+<attributes>
+
+<attribute id="uid">
+	<display>UserID</display>
+	<hint>Unique ID to represent this employee</hint>
+	<order>1</order>
+	<spacer>1</spacer>
+</attribute>
+
+
+<attribute id="fullNameInBangla">
+	<display>Full Name (Bangla)</display>
+	<order>2</order>
+</attribute>
+<attribute id="fullNameInEnglish">
+	<display>Full Name (English)</display>
+	<order>3</order>
+</attribute>
+<attribute id="NID">
+	<display>National ID</display>
+	<order>4</order>
+</attribute>
+<attribute id="birthRegNo">
+	<display>Birth Registration / Identification No.</display>
+	<order>5</order>
+</attribute>
+<attribute id="citizenUID">
+	<display>Citizen UID</display>
+	<order>6</order>
+	<spacer>1</spacer>
+</attribute>
+
+
+<attribute id="fatherNameInBangla">
+	<display>Father's Full Name (Bangla)</display>
+	<order>7</order>
+</attribute>
+<attribute id="fatherNameInEnglish">
+	<display>Father's Full Name (English)</display>
+	<order>8</order>
+</attribute>
+<attribute id="fatherNID">
+	<display>Father's NID</display>
+	<order>9</order>
+</attribute>
+<attribute id="fatherBirthRegNo">
+	<display>Father's Birth Registration No.</display>
+	<order>10</order>
+</attribute>
+<attribute id="fatherUID">
+	<display>Father's UID</display>
+	<order>11</order>
+	<spacer>1</spacer>
+</attribute>
+
+
+<attribute id="motherNameInBangla">
+	<display>Mother's Full Name (Bangla)</display>
+	<order>12</order>
+</attribute>
+<attribute id="motherNameInEnglish">
+	<display>Mother's Full Name (English)</display>
+	<order>13</order>
+</attribute>
+<attribute id="motherNID">
+	<display>Mother's NID</display>
+	<order>14</order>
+</attribute>
+<attribute id="motherBirthRegNo">
+	<display>Mother's Birth Registration No.</display>
+	<order>15</order>
+</attribute>
+<attribute id="motherUID">
+	<display>Mother's UID</display>
+	<order>16</order>
+	<spacer>1</spacer>
+</attribute>
+
+
+<attribute id="presentHouse">
+	<display>Present Address - Household No.</display>
+	<order>17</order>
+</attribute>
+<attribute id="presentRoad">
+	<display>Present Address - Road No.</display>
+	<order>18</order>
+</attribute>
+<attribute id="presentArea">
+	<display>Present Address - Area</display>
+	<hint>Block/Sector/Mouza/Moholla/Area</hint>
+	<order>19</order>
+</attribute>
+<attribute id="presentVillage">
+	<display>Present Address - Village</display>
+	<order>20</order>
+</attribute>
+<attribute id="presentPostOffice">
+	<display>Present Address - Post Office</display>
+	<order>21</order>
+</attribute>
+<attribute id="presentPostCode">
+	<display>Present Address - Post Code</display>
+	<order>22</order>
+</attribute>
+<attribute id="presentWard">
+	<display>Present Address - Ward No.</display>
+	<order>23</order>
+</attribute>
+<attribute id="presentUnion">
+	<display>Present Address - Union / Canton. Board</display>
+	<order>24</order>
+</attribute>
+<attribute id="presentUpazila">
+	<display>Present Address - Upazila</display>
+	<order>25</order>
+</attribute>
+<attribute id="presentThana">
+	<display>Present Address - Thana</display>
+	<order>26</order>
+</attribute>
+<attribute id="presentMunicipality">
+	<display>Present Address - Municipality</display>
+	<order>27</order>
+</attribute>
+<attribute id="presentDistrict">
+	<display>Present Address - District</display>
+	<order>28</order>
+	<type>select</type>
+	<value id="01">01 - Bagerhat</value>
+	<value id="02">02 - Bandarban</value>
+	<value id="03">03 - Barguna</value>
+	<value id="04">04 - Barisal</value>
+	<value id="05">05 - Barnmanbaria</value>
+	<value id="06">06 - Bhola</value>
+	<value id="07">07 - Bogra</value>
+	<value id="08">08 - Chandpur</value>
+	<value id="09">09 - Chittagong</value>
+	<value id="10">10 - Chuadanga</value>
+	<value id="11">11 - Comilla</value>
+	<value id="12">12 - Cox's Bazar</value>
+	<value id="13">13 - Dhaka</value>
+	<value id="14">14 - Dinajpur</value>
+	<value id="15">15 - Faridpur</value>
+	<value id="16">16 - Feni</value>
+	<value id="17">17 - Gaibandha</value>
+	<value id="18">18 - Gazipur</value>
+	<value id="19">19 - Gopalganj</value>
+	<value id="20">20 - Habiganj</value>
+	<value id="21">21 - Jaipurhat</value>
+	<value id="22">22 - Jamalpur</value>
+	<value id="23">23 - Jessore</value>
+	<value id="24">24 - Jhalakathi</value>
+	<value id="25">25 - Jhinaidah</value>
+	<value id="26">26 - Khagrachari</value>
+	<value id="27">27 - Khulna</value>
+	<value id="28">28 - Kishoreganj</value>
+	<value id="29">29 - Kurigram</value>
+	<value id="30">30 - Kushtia</value>
+	<value id="31">31 - Lakshmipur</value>
+	<value id="32">32 - Lalmonirhat</value>
+	<value id="33">33 - Madaripur</value>
+	<value id="34">34 - Magura</value>
+	<value id="35">35 - Manikganj</value>
+	<value id="36">36 - Meherpur</value>
+	<value id="37">37 - Moulavibazar</value>
+	<value id="38">38 - Munshiganj</value>
+	<value id="39">39 - Mymensingh</value>
+	<value id="40">40 - Naogaon</value>
+	<value id="41">41 - Narayangan</value>
+	<value id="42">42 - Narsingdi</value>
+	<value id="43">43 - Natore</value>
+	<value id="44">44 - Nawabgonj</value>
+	<value id="45">45 - Netrokona</value>
+	<value id="46">46 - Nilphamari</value>
+	<value id="47">47 - Noakhali</value>
+	<value id="48">48 - Norail</value>
+	<value id="49">49 - Pabna</value>
+	<value id="50">50 - Panchagarh</value>
+	<value id="51">51 - Patuakhali</value>
+	<value id="52">52 - Pirojpur</value>
+	<value id="53">53 - Rajbari</value>
+	<value id="54">54 - Rajshahi</value>
+	<value id="55">55 - Rangamati</value>
+	<value id="56">56 - Rangpur</value>
+	<value id="57">57 - Satkhira</value>
+	<value id="58">58 - Shariyatpur</value>
+	<value id="59">59 - Sherpur</value>
+	<value id="60">60 - Sirajgonj</value>
+	<value id="61">61 - Sunamganj</value>
+	<value id="62">62 - Sylhet</value>
+	<value id="63">63 - Tangail</value>
+	<value id="64">64 - Thakurgaon</value>
+</attribute>
+<attribute id="presentCountry">
+	<display>Present Address - Country</display>
+	<order>29</order>
+	<type>select</type>
+	<value id="001">001 - Bangladesh</value>
+	<value id="002">002 - United States</value>
+	<value id="003">003 - United Kingdom</value>
+	<spacer>1</spacer>
+</attribute>
+
+
+<attribute id="permanentHouse">
+	<display>Permanent Address - Household No.</display>
+	<order>30</order>
+</attribute>
+<attribute id="permanentRoad">
+	<display>Permanent Address - Road No.</display>
+	<order>30</order>
+</attribute>
+<attribute id="permanentArea">
+	<display>Permanent Address - Area</display>
+	<hint>Block/Sector/Mouza/Moholla/Area</hint>
+	<order>32</order>
+</attribute>
+<attribute id="permanentVillage">
+	<display>Permanent Address - Village</display>
+	<order>33</order>
+</attribute>
+<attribute id="permanentPostOffice">
+	<display>Permanent Address - Post Office</display>
+	<order>34</order>
+</attribute>
+<attribute id="permanentPostCode">
+	<display>Permanent Address - Post Code</display>
+	<order>35</order>
+</attribute>
+<attribute id="permanentWard">
+	<display>Permanent Address - Ward No.</display>
+	<order>36</order>
+</attribute>
+<attribute id="permanentUnion">
+	<display>Permanent Address - Union / Canton. Board</display>
+	<order>37</order>
+</attribute>
+<attribute id="permanentUpazila">
+	<display>Permanent Address - Upazila</display>
+	<order>38</order>
+</attribute>
+<attribute id="permanentThana">
+	<display>Permanent Address - Thana</display>
+	<order>39</order>
+</attribute>
+<attribute id="permanentMunicipality">
+	<display>Permanent Address - Municipality</display>
+	<order>40</order>
+</attribute>
+<attribute id="permanentDistrict">
+	<display>Permanent Address - District</display>
+	<order>41</order>
+	<type>select</type>
+	<value id="01">01 - Bagerhat</value>
+	<value id="02">02 - Bandarban</value>
+	<value id="03">03 - Barguna</value>
+	<value id="04">04 - Barisal</value>
+	<value id="05">05 - Barnmanbaria</value>
+	<value id="06">06 - Bhola</value>
+	<value id="07">07 - Bogra</value>
+	<value id="08">08 - Chandpur</value>
+	<value id="09">09 - Chittagong</value>
+	<value id="10">10 - Chuadanga</value>
+	<value id="11">11 - Comilla</value>
+	<value id="12">12 - Cox's Bazar</value>
+	<value id="13">13 - Dhaka</value>
+	<value id="14">14 - Dinajpur</value>
+	<value id="15">15 - Faridpur</value>
+	<value id="16">16 - Feni</value>
+	<value id="17">17 - Gaibandha</value>
+	<value id="18">18 - Gazipur</value>
+	<value id="19">19 - Gopalganj</value>
+	<value id="20">20 - Habiganj</value>
+	<value id="21">21 - Jaipurhat</value>
+	<value id="22">22 - Jamalpur</value>
+	<value id="23">23 - Jessore</value>
+	<value id="24">24 - Jhalakathi</value>
+	<value id="25">25 - Jhinaidah</value>
+	<value id="26">26 - Khagrachari</value>
+	<value id="27">27 - Khulna</value>
+	<value id="28">28 - Kishoreganj</value>
+	<value id="29">29 - Kurigram</value>
+	<value id="30">30 - Kushtia</value>
+	<value id="31">31 - Lakshmipur</value>
+	<value id="32">32 - Lalmonirhat</value>
+	<value id="33">33 - Madaripur</value>
+	<value id="34">34 - Magura</value>
+	<value id="35">35 - Manikganj</value>
+	<value id="36">36 - Meherpur</value>
+	<value id="37">37 - Moulavibazar</value>
+	<value id="38">38 - Munshiganj</value>
+	<value id="39">39 - Mymensingh</value>
+	<value id="40">40 - Naogaon</value>
+	<value id="41">41 - Narayangan</value>
+	<value id="42">42 - Narsingdi</value>
+	<value id="43">43 - Natore</value>
+	<value id="44">44 - Nawabgonj</value>
+	<value id="45">45 - Netrokona</value>
+	<value id="46">46 - Nilphamari</value>
+	<value id="47">47 - Noakhali</value>
+	<value id="48">48 - Norail</value>
+	<value id="49">49 - Pabna</value>
+	<value id="50">50 - Panchagarh</value>
+	<value id="51">51 - Patuakhali</value>
+	<value id="52">52 - Pirojpur</value>
+	<value id="53">53 - Rajbari</value>
+	<value id="54">54 - Rajshahi</value>
+	<value id="55">55 - Rangamati</value>
+	<value id="56">56 - Rangpur</value>
+	<value id="57">57 - Satkhira</value>
+	<value id="58">58 - Shariyatpur</value>
+	<value id="59">59 - Sherpur</value>
+	<value id="60">60 - Sirajgonj</value>
+	<value id="61">61 - Sunamganj</value>
+	<value id="62">62 - Sylhet</value>
+	<value id="63">63 - Tangail</value>
+	<value id="64">64 - Thakurgaon</value>
+</attribute>
+<attribute id="permanentCountry">
+	<display>Permanent Address - Country</display>
+	<order>42</order>
+	<type>select</type>
+	<value id="001">001 - Bangladesh</value>
+	<value id="002">002 - United States</value>
+	<value id="003">003 - United Kingdom</value>
+	<spacer>1</spacer>
+</attribute>
+
+
+<attribute id="dateOfBirth">
+	<display>Date of Birth</display>
+	<order>43</order>
+</attribute>
+<attribute id="placeOfBirth">
+	<display>Place of Birth</display>
+	<order>44</order>
+</attribute>
+<attribute id="gender">
+	<display>Gender</display>
+	<order>45</order>
+	<type>select</type>
+	<value id="1">Male</value>
+	<value id="2">Female</value>
+	<value id="3">Other</value>
+</attribute>
+<attribute id="religion">
+	<display>Religion</display>
+	<order>46</order>
+	<type>select</type>
+	<value id="1">Islam</value>
+	<value id="2">Hinduism</value>
+	<value id="3">Buddism</value>
+	<value id="4">Christianity</value>
+	<value id="8">Refuse to Disclose</value>
+	<value id="9">Atheist</value>
+	<value id="0">Others</value>
+</attribute>
+<attribute id="occupation">
+	<display>Occupation</display>
+	<order>47</order>
+	<type>select</type>
+	<value id="01">01 - Technician</value>
+	<value id="02">02 - Engineer</value>
+	<value id="03">03 - Physician</value>
+	<value id="04">04 - Security Guard</value>
+</attribute>
+<attribute id="bloodGroup">
+	<display>Blood Group</display>
+	<order>48</order>
+	<type>select</type>
+	<value id="1">A+</value>
+	<value id="2">B+</value>
+	<value id="3">B-</value>
+	<value id="4">O+</value>
+	<value id="5">O-</value>
+	<value id="6">AB+</value>
+</attribute>
+<attribute id="nationality">
+	<display>Nationality</display>
+	<order>49</order>
+	<type>select</type>
+	<value id="Bangladeshi">Bangladeshi</value>
+	<value id="Indian">Indian</value>
+	<value id="British">British</value>
+</attribute>
+<attribute id="education">
+	<display>Educational Qualification</display>
+	<order>50</order>
+	<type>select</type>
+	<value id="00">Nursery / Kindergarten</value>
+	<value id="01">Class I</value>
+	<value id="02">Class II</value>
+	<value id="03">Class III</value>
+	<value id="04">Class IV</value>
+	<value id="05">Class V</value>
+	<value id="06">Class VI</value>
+	<value id="07">Class VII</value>
+	<value id="08">Class VIII</value>
+	<value id="09">Class IX</value>
+	<value id="10">Class X</value>
+	<value id="11">Higher Secondary or Equivalent</value>
+	<value id="12">Graduate or Equivalent</value>
+</attribute>
+<attribute id="disability">
+	<display>Disability Type</display>
+	<order>51</order>
+	<type>select</type>
+	<value id="0">None</value>
+	<value id="1">Dumb</value>
+	<value id="2">Blind</value>
+	<value id="3">Deaf</value>
+	<value id="4">Physical</value>
+	<value id="5">Mental</value>
+</attribute>
+<attribute id="ethnicity">
+	<display>Ethnicity</display>
+	<order>52</order>
+	<type>select</type>
+	<value id="00">Chakma</value>
+	<value id="01">Garo</value>
+	<spacer>1</spacer>
+</attribute>
+
+
+<attribute id="maritalStatus">
+	<display>Marital Status</display>
+	<order>53</order>
+	<type>select</type>
+	<value id="1">Unmarried</value>
+	<value id="2">Married</value>
+	<value id="3">Single</value>
+	<value id="4">Separated</value>
+	<value id="5">Divorced</value>
+</attribute>
+<attribute id="marriageId">
+	<display>Marriage ID</display>
+	<order>54</order>
+</attribute>
+<attribute id="spouseNameInBangla">
+	<display>Spouse's Full Name (Bangla)</display>
+	<order>55</order>
+</attribute>
+<attribute id="spouseNameInEnglish">
+	<display>Spouse's Full Name (English)</display>
+	<order>56</order>
+</attribute>
+<attribute id="spouseNID">
+	<display>Spouse's NID</display>
+	<order>57</order>
+</attribute>
+<attribute id="spouseBirthRegNo">
+	<display>Spouse's Birth Registration No.</display>
+	<order>58</order>
+</attribute>
+<attribute id="spouseUID">
+	<display>Spouse's UID</display>
+	<order>59</order>
+	<spacer>1</spacer>
+</attribute>
+
+
+<attribute id="cadre">
+	<display>Cadre</display>
+	<order>60</order>
+</attribute>
+<attribute id="batch">
+	<display>Batch</display>
+	<order>61</order>
+</attribute>
+<attribute id="serviceId">
+	<display>Service ID</display>
+	<order>62</order>
+	<spacer>1</spacer>
+</attribute>
+
+
+<attribute id="rank">
+	<display>Present Posting Rank</display>
+	<order>63</order>
+	<type>select</type>
+	<value><![CDATA[=php.PickList(/;(&(objectClass=bdGovtEmployeeRank));cn;%cn%)]]></value>
+</attribute>
+<attribute id="postingOrg">
+	<display>Present Posting Organization</display>
+	<order>64</order>
+</attribute>
+<attribute id="primaryDesignation">
+	<display>Present Posting Designation (Primary)</display>
+	<order>65</order>
+</attribute>
+<attribute id="primaryPostingLocation">
+	<display>Present Posting Location (Primary)</display>
+	<order>66</order>
+</attribute>
+<attribute id="secondaryDesignation">
+	<display>Present Posting Designation (Secondary)</display>
+	<order>67</order>
+</attribute>
+<attribute id="secondaryPostingLocation">
+	<display>Present Posting Location (Secondary)</display>
+	<order>68</order>
+	<spacer>1</spacer>
+</attribute>
+
+
+<attribute id="serviceJoinedDate">
+	<display>Joining Date of  Govt. Service</display>
+	<order>69</order>
+</attribute>
+<attribute id="postJoinedDate">
+	<display>Joining Date of Present Post</display>
+	<order>70</order>
+</attribute>
+<attribute id="postConfirmedDate">
+	<display>Joining Confirmation Date</display>
+	<order>71</order>
+</attribute>
+<attribute id="employeeStatus">
+	<display>Employee Status</display>
+	<order>72</order>
+	<spacer>1</spacer>
+</attribute>
+
+
+<attribute id="includedModuleForms">
+	<display>Included Authorization Roles</display>
+	<order>73</order>
+</attribute>
+<attribute id="excludedModuleForms">
+	<display>Excluded Authorization Roles</display>
+	<order>74</order>
+	<spacer>1</spacer>
+</attribute>
+
+
+<attribute id="officeTel">
+	<display>Office Telephone/Mobile No.</display>
+	<order>75</order>
+</attribute>
+<attribute id="mobileNo">
+	<display>Personal Mobile No.</display>
+	<order>76</order>
+</attribute>
+<attribute id="emailAddr">
+	<display>Email</display>
+	<order>77</order>
+	<spacer>1</spacer>
+</attribute>
+
+
+<attribute id="userPassword">
+	<display>Password</display>
+	<icon>lock.png</icon>
+	<order>78</order>
+	<verify>1</verify>
+</attribute>
+<attribute id="passwordExpiryDate">
+	<display>Password Expiry Date</display>
+	<order>79</order>
+</attribute>
+<attribute id="passwordHistory">
+	<display>Password History</display>
+	<order>80</order>
+	<type>password</type>
+	<max>5</max>
+</attribute>
+
+
+</attributes>
+
+</template>
